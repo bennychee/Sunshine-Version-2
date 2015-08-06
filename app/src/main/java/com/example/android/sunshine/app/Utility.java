@@ -142,6 +142,8 @@ public class Utility {
         return DateFormat.getDateInstance().format(date);
     }
 
+    
+
     public static String getFormattedWind(Context context, float windSpeed, float degrees) {
         int windFormat;
         if (Utility.isMetric(context)) {
