@@ -127,7 +127,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Log.v(LOG_TAG, "In onCreateLoader");
         Intent intent = getActivity().getIntent();
-        if (intent == null) {
+        if (intent == null || intent.getData() == null) {
             return null;
         }
 
@@ -167,7 +167,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
                 getActivity(), data.getDouble(COL_WEATHER_MIN_TEMP), isMetric);
 
         mFriendlyDateView.setText(Utility.getDayName(getActivity(), data.getLong((COL_WEATHER_DATE))));
-
         mDateView.setText(dateString);
 
         mHighTempView.setText(high);
