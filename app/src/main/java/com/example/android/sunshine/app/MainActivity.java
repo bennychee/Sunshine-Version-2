@@ -40,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
             // The detail container view will be present only in the large-screen layouts
             // (res/layout-sw600dp). If this view is present, then the activity should be
             // in two-pane mode.
+            Log.e("Tablet Mode", "true");
             mTwoPane = true;
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
@@ -50,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
                         .commit();
             }
         } else {
+            Log.e("Tablet Mode", "false");
             mTwoPane = false;
         }
 
