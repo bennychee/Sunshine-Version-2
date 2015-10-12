@@ -102,7 +102,7 @@ public class WeatherContract {
         // Column with the foreign key into the location table.
         public static final String COLUMN_LOC_KEY = "location_id";
         // Date, stored as long in milliseconds since the epoch
-        public static final String COLUMN_DATE = "date";
+        public static final String COLUMN_DATETEXT = "date";
         // Weather id as returned by API, to identify the icon to be used
         public static final String COLUMN_WEATHER_ID = "weather_id";
 
@@ -141,7 +141,7 @@ public class WeatherContract {
                 String locationSetting, long startDate) {
             long normalizedDate = normalizeDate(startDate);
             return CONTENT_URI.buildUpon().appendPath(locationSetting)
-                    .appendQueryParameter(COLUMN_DATE, Long.toString(normalizedDate)).build();
+                    .appendQueryParameter(COLUMN_DATETEXT, Long.toString(normalizedDate)).build();
         }
 
         public static Uri buildWeatherLocationWithDate(String locationSetting, long date) {
@@ -158,7 +158,7 @@ public class WeatherContract {
         }
 
         public static long getStartDateFromUri(Uri uri) {
-            String dateString = uri.getQueryParameter(COLUMN_DATE);
+            String dateString = uri.getQueryParameter(COLUMN_DATETEXT);
             if (null != dateString && dateString.length() > 0)
                 return Long.parseLong(dateString);
             else
