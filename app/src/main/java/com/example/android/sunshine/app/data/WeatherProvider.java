@@ -60,13 +60,13 @@ public class WeatherProvider extends ContentProvider {
     private static final String sLocationSettingWithStartDateSelection =
             WeatherContract.LocationEntry.TABLE_NAME+
                     "." + WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING + " = ? AND " +
-                    WeatherContract.WeatherEntry.COLUMN_DATE + " >= ? ";
+                    WeatherContract.WeatherEntry.COLUMN_DATETEXT + " >= ? ";
 
     //location.location_setting = ? AND date = ?
     private static final String sLocationSettingAndDaySelection =
             WeatherContract.LocationEntry.TABLE_NAME +
                     "." + WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING + " = ? AND " +
-                    WeatherContract.WeatherEntry.COLUMN_DATE + " = ? ";
+                    WeatherContract.WeatherEntry.COLUMN_DATETEXT + " = ? ";
 
     private Cursor getWeatherByLocationSetting(Uri uri, String[] projection, String sortOrder) {
         String locationSetting = WeatherContract.WeatherEntry.getLocationSettingFromUri(uri);
@@ -283,9 +283,9 @@ public class WeatherProvider extends ContentProvider {
 
     private void normalizeDate(ContentValues values) {
         // normalize the date value
-        if (values.containsKey(WeatherContract.WeatherEntry.COLUMN_DATE)) {
-            long dateValue = values.getAsLong(WeatherContract.WeatherEntry.COLUMN_DATE);
-            values.put(WeatherContract.WeatherEntry.COLUMN_DATE, WeatherContract.normalizeDate(dateValue));
+        if (values.containsKey(WeatherContract.WeatherEntry.COLUMN_DATETEXT)) {
+            long dateValue = values.getAsLong(WeatherContract.WeatherEntry.COLUMN_DATETEXT);
+            values.put(WeatherContract.WeatherEntry.COLUMN_DATETEXT, WeatherContract.normalizeDate(dateValue));
         }
     }
 

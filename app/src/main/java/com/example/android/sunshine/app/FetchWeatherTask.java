@@ -218,7 +218,7 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
                 ContentValues weatherValues = new ContentValues();
 
                 weatherValues.put(WeatherEntry.COLUMN_LOC_KEY, locationId);
-                weatherValues.put(WeatherEntry.COLUMN_DATE, dateTime);
+                weatherValues.put(WeatherEntry.COLUMN_DATETEXT, dateTime);
                 weatherValues.put(WeatherEntry.COLUMN_HUMIDITY, humidity);
                 weatherValues.put(WeatherEntry.COLUMN_PRESSURE, pressure);
                 weatherValues.put(WeatherEntry.COLUMN_WIND_SPEED, windSpeed);
@@ -278,12 +278,15 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
             final String FORMAT_PARAM = "mode";
             final String UNITS_PARAM = "units";
             final String DAYS_PARAM = "cnt";
+            final String APPID_PARAM = "APPID";
+            final String APIKEY = "1410bf15cb4af29f5050a0ad488d44dd";
 
             Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, params[0])
                     .appendQueryParameter(FORMAT_PARAM, format)
                     .appendQueryParameter(UNITS_PARAM, units)
                     .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                    .appendQueryParameter(APPID_PARAM, APIKEY)
                     .build();
 
             URL url = new URL(builtUri.toString());

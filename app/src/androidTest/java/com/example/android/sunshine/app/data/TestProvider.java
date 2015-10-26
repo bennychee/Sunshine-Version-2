@@ -431,7 +431,7 @@ public class TestProvider extends AndroidTestCase {
         for ( int i = 0; i < BULK_INSERT_RECORDS_TO_INSERT; i++, currentTestDate+= millisecondsInADay ) {
             ContentValues weatherValues = new ContentValues();
             weatherValues.put(WeatherContract.WeatherEntry.COLUMN_LOC_KEY, locationRowId);
-            weatherValues.put(WeatherContract.WeatherEntry.COLUMN_DATE, currentTestDate);
+            weatherValues.put(WeatherContract.WeatherEntry.COLUMN_DATETEXT, currentTestDate);
             weatherValues.put(WeatherContract.WeatherEntry.COLUMN_DEGREES, 1.1);
             weatherValues.put(WeatherContract.WeatherEntry.COLUMN_HUMIDITY, 1.2 + 0.01 * (float) i);
             weatherValues.put(WeatherContract.WeatherEntry.COLUMN_PRESSURE, 1.3 - 0.01 * (float) i);
@@ -498,7 +498,7 @@ public class TestProvider extends AndroidTestCase {
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
-                WeatherEntry.COLUMN_DATE + " ASC"  // sort order == by DATE ASCENDING
+                WeatherEntry.COLUMN_DATETEXT + " ASC"  // sort order == by DATE ASCENDING
         );
 
         // we should have as many records in the database as we've inserted
