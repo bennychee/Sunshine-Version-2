@@ -340,11 +340,14 @@ public class SunshineService extends IntentService {
     }
 
     public static class AlarmReceiver extends BroadcastReceiver {
+        private final String LOG_TAG = SunshineService.class.getSimpleName();
+
         @Override
         public void onReceive(Context context, Intent intent) {
             Intent sendIntent = new Intent(context, SunshineService.class);
             sendIntent.putExtra(SunshineService.LOCATION_QUERY_EXTRA, intent.getStringExtra(SunshineService.LOCATION_QUERY_EXTRA));
             context.startService(sendIntent);
+            Log.d(LOG_TAG, "Received Alarm");
         }
     }
 
